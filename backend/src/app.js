@@ -14,12 +14,38 @@ export function createApp(env) {
 
   app.set("trust proxy", 1);
 
-  app.use(
-    cors({
-      origin: env.CORS_ORIGINS,
-      credentials: true,
-    }),
-  );
+  const allowedOrigins = Array.isArray(env.CORS_ORIGINS)
+    ? env.CORS_ORIGINS
+    : [];
+
+  const corsOptions = {
+    origin(origin, callback) {
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      // Allow Vercel preview/prod frontends without requiring per-deploy env updates.
+      if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    optionsSuccessStatus: 204,
+  };
+
+  app.use(cors(corsOptions));
+  app.options("*", cors(corsOptions));
   app.use(helmet());
   app.use(express.json({ limit: "1mb" }));
   app.use(morgan(env.NODE_ENV === "production" ? "combined" : "dev"));

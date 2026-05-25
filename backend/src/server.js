@@ -14,7 +14,6 @@ const EnvSchema = z.object({
     .transform((val) => val.split(",").map((s) => s.trim()).filter(Boolean)),
   MONGODB_URI: z.string().min(1),
   CLERK_SECRET_KEY: z.string().min(1),
-  CLERK_PUBLISHABLE_KEY: z.string().min(1),
   CLERK_SIGN_IN_URL: z.string().optional(),
   CLERK_SIGN_UP_URL: z.string().optional(),
   STRIPE_SECRET_KEY: z.string().min(1).optional(),
