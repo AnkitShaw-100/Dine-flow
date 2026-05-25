@@ -128,6 +128,10 @@ The backend will be available at `http://localhost:3000`
 
 The frontend will be available at `http://localhost:5173`
 
+### Production Deployment
+
+Set `VITE_API_BASE_URL` in the deployed frontend to your live API origin. If it is omitted, the frontend will use a relative URL in production, which only works when the API is served from the same origin or proxied through the same host.
+
 ## Available Scripts
 
 ### Backend

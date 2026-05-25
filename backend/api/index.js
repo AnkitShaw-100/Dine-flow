@@ -11,7 +11,7 @@ const EnvSchema = z.object({
 
   CORS_ORIGINS: z
     .string()
-    .default("http://localhost:5173")
+    .default("http://localhost:5173,https://try-dine-flow.vercel.app")
     .transform((val) =>
       val.split(",").map((s) => s.trim()).filter(Boolean),
     ),
@@ -25,7 +25,7 @@ const EnvSchema = z.object({
 
   STRIPE_SECRET_KEY: z.string().min(1).optional(),
   STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
-  FRONTEND_URL: z.string().url().default("http://localhost:5173"),
+  FRONTEND_URL: z.string().url().default("https://try-dine-flow.vercel.app"),
 });
 
 const parsed = EnvSchema.safeParse(process.env);

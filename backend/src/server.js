@@ -10,7 +10,7 @@ const EnvSchema = z.object({
   PORT: z.coerce.number().int().positive().default(4000),
   CORS_ORIGINS: z
     .string()
-    .default("http://localhost:5173")
+    .default("http://localhost:5173,https://try-dine-flow.vercel.app")
     .transform((val) => val.split(",").map((s) => s.trim()).filter(Boolean)),
   MONGODB_URI: z.string().min(1),
   CLERK_SECRET_KEY: z.string().min(1),
@@ -19,7 +19,7 @@ const EnvSchema = z.object({
   CLERK_SIGN_UP_URL: z.string().optional(),
   STRIPE_SECRET_KEY: z.string().min(1).optional(),
   STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
-  FRONTEND_URL: z.string().url().default("http://localhost:5173"),
+  FRONTEND_URL: z.string().url().default("https://try-dine-flow.vercel.app"),
 });
 
 const parsed = EnvSchema.safeParse(process.env);
