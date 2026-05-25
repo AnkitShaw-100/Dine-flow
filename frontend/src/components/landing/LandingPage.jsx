@@ -86,7 +86,7 @@ const Hero = () => (
           the back office.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Link to="/sign-up/$" params={{ _splat: "" }}>
+          <Link to="/sign-up">
             <Button
               size="lg"
               className="bg-primary text-primary-foreground shadow-soft hover:bg-primary/90"
@@ -252,7 +252,7 @@ const HowItWorks = () => (
           ))}
         </div>
         <div className="mt-8">
-          <Link to="/sign-up/$" params={{ _splat: "" }}>
+          <Link to="/sign-up">
             <Button
               size="lg"
               className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
@@ -406,7 +406,7 @@ const Pricing = () => (
                 </li>
               ))}
             </ul>
-            <Link to="/sign-up/$" params={{ _splat: "" }} className="mt-8">
+                      <Link to="/sign-up" className="mt-8">
               <Button
                 className={`w-full ${
                   p.highlight
@@ -546,7 +546,7 @@ const CTA = () => (
         no card required.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Link to="/sign-up/$" params={{ _splat: "" }}>
+        <Link to="/sign-up">
           <Button
             size="lg"
             className="bg-primary text-primary-foreground hover:bg-primary/90"
