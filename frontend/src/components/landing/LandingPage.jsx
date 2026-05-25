@@ -406,7 +406,7 @@ const Pricing = () => (
                 </li>
               ))}
             </ul>
-                      <Link to="/sign-up" className="mt-8">
+            <Link to="/sign-up" className="mt-8">
               <Button
                 className={`w-full ${
                   p.highlight

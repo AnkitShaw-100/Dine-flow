@@ -57,7 +57,7 @@ export default function TablesPage() {
         setError("");
         const token = await getToken();
         const data = await apiFetch("/v1/tables", { token });
-        console.log(data.tables)
+        console.log(data.tables);
         if (!cancelled) setTables(data.tables ?? []);
       } catch (e) {
         if (!cancelled) setError(e?.message || "Failed to load tables");
